@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MediCaid.Common\MediCaid.Common.csproj" />
+    <ProjectReference Include="..\MediCaid.Repository\MediCaid.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
