@@ -19,8 +19,12 @@ namespace MediCaid.UI.Controllers.Master
             _IPatientRepo = patientRepo;
         }
 
+        /// <summary>
+        /// Code to Create Patient
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
-
         public async Task<IActionResult> CreatePatient(PatientMaster model)
         {
             var response = await _IPatientRepo.CreateEntity(model);
