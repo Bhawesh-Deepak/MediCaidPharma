@@ -25,6 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\PatientModel.ts" />
+    <None Remove="ClientApp\src\app\PatientService.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <None Include="wwwroot\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
@@ -76,6 +81,11 @@
 
   <ItemGroup>
     <Folder Include="Helper\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\PatientModel.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\PatientService.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

@@ -1,0 +1,81 @@
+<link href="assets/plugins/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/lobipanel/lobipanel.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/pace/flash.css" rel="stylesheet" type="text/css" />
+<link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet" type="text/css" />
+<link href="assets/themify-icons/themify-icons.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/toastr/toastr.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/emojionearea/emojionearea.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/monthly/monthly.css" rel="stylesheet" type="text/css" />
+<link href="assets/dist/css/stylehealth.min.css" rel="stylesheet" type="text/css" />
+
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-bd lobidrag">
+        <div class="panel-heading">
+          <div class="btn-group">
+            <a class="btn btn-success" [routerLink]="['/patient']">
+              <i class="fa fa-plus"></i> Add Employee
+            </a>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="panel-header">
+            </div>
+
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Gender</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Emergency Number</th>
+                  <th>Update</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let patient of patientModels">
+                  <td>
+                    <label>{{patient.name}}</label>
+                  </td>
+                  <td>
+                    {{patient.age}}
+                  </td>
+                  <td>{{patient.gender}}</td>
+                  <td>{{patient.phone}}</td>
+                  <td>{{patient.address}}</td>
+                  <td>{{patient.emergencyContactNumber}}</td>
+                  <td>
+                    <a  class="btn btn-info btn-xs" data-toggle="modal" [routerLink]="['/patient']" [queryParams]="{id:patient.id}">
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#ordine">
+                      <i class="fa fa-trash-o"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="page-nation text-right">
+            <ul class="pagination pagination-large">
+              <li class="disabled"><span>«</span></li>
+              <li class="active"><span>1</span></li>
+              <li><a href="#">2</a></li>
+              <li class="disabled"><span>...</span></li>
+              <li>
+              <li><a rel="next" href="#">Next</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

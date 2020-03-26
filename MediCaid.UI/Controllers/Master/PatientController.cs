@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Medicaid.Core.Master;
+﻿using Medicaid.Core.Master;
 using MediCaid.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace MediCaid.UI.Controllers.Master
 {
@@ -27,12 +23,33 @@ namespace MediCaid.UI.Controllers.Master
         [HttpPost]
         public async Task<IActionResult> CreatePatient(PatientMaster model)
         {
-            var response = await _IPatientRepo.CreateEntity(model);
-            if (response == Common.ResponseStatus.AddedSuccessfully)
-                return Ok("Patient Created Successfully");
+            if(model.Id>0)
+            {
+                var response = await _IPatientRepo.Update(model);
+                if (response == Common.ResponseStatus.UpdatedSuccessFully)
+                    return Ok("Patient updated Successfully");
 
-            return Ok("Unable to Create Patient");
+                return BadRequest("Error patient updation. Please contact Admin Department");
+            }
+            else
+            {
+                var response = await _IPatientRepo.CreateEntity(model);
+                if (response == Common.ResponseStatus.AddedSuccessfully)
+                    return Ok("Patient Created Successfully");
 
+                return BadRequest("Error patient creation. Please contact Admin Department");
+            }
+           
+        }
+
+        public async Task<IActionResult> GetPatients()
+        {
+            return Ok(await _IPatientRepo.GetList(x => x.IsActive == 1));
+        }
+
+        public async Task<IActionResult> GetPatientById(int id)
+        {
+            return Ok(await _IPatientRepo.GetSingle(x => x.Id == id));
         }
     }
 }
